@@ -2,15 +2,16 @@ from openpyxl import load_workbook
 
 def read_sheet(sheet, table_data):
     header=[]
-    table_entry={}
     a=0
     for row1 in sheet.iter_rows(max_row=1):
         for cell in row1:
             header.append(cell.value)
     for row2 in sheet.iter_rows(min_row=2, values_only=True):
-        for x, cell in enumerate(row2):
-            table_entry[header[x]]=cell
-        table_data[a]=table_entry
+        table_entry={}
+        for x, cell in enumerate(row2):       
+            info=cell
+            table_entry[header[x]]=info
+        table_data.append(table_entry)
         a=a+1
     return table_data
 
