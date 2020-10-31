@@ -24,12 +24,9 @@ def readxls_main(xlsfile):
         sheet=wb[sh_name]
         tableentry=read_sheet(sheet, table_data)
         xls_data[sh_name]=tableentry
-    for key, value in xls_data.items():
-        print (key)
-        print (value)
+    return xls_data
 
-     
 
 if (__name__=='__main__'):
-    readxls_main(r"C:\Users\DrAndreasPinheiro\Documents\Code\soda_compareVVT\SODA_Vorlage_Allgemein_v6.xlsx")
-    #pass
+    #readxls_main(r"C:\Users\DrAndreasPinheiro\Documents\Code\soda_compareVVT\SODA_Vorlage_Allgemein_v6.xlsx")
+    pass
