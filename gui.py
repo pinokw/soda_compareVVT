@@ -4,7 +4,7 @@ from tkinter import font
 from tkinter import filedialog
 import tkinter.messagebox
 from pkg import xls_VVT
-from pkg import VVT_check
+from pkg import VVT_check, TOM_check, TODO_check, write_xls
 import os, sys
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 sys.path.append(fileDir)
@@ -33,9 +33,11 @@ def xls_input(v):
 def check_vvt():
     xls_old=xls_VVT.readxls_main(oldXLS_str)
     xls_new=xls_VVT.readxls_main(newXLS_str)
-    lst_return=VVT_check.main(xls_old, xls_new)
-    for xxy, lst_eintry in enumerate(lst_return):
-        print (xxy, lst_eintry)
+    vvt_return=VVT_check.main(xls_old, xls_new)
+    tom_return=TOM_check.main(xls_old, xls_new)
+    ToDo_return=TODO_check.main(xls_old, xls_new)
+    write_xls.print_xls(vvt_return, tom_return, ToDo_return)
+    print('Das Workbook mit den Ergebnissen wurde erstellt')
 
 
 cmd_input=Tk.Button(fr_input, text="VVT ALT",width=20, bg='#7dcae8' , command=lambda: xls_input(1))
