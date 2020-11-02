@@ -63,7 +63,6 @@ def vergleiche_bewerte(info_o, info_n, bez_o, verfahren_o, str_column, result_cm
     check_info=check_items(str(info_o), str(info_n))
     if check_info>5 and check_info<500:
         # Speichern des Verfahrens und der Änderung in einem DICT
-        #print ('Die Levensthein-Zahl für ' + verfahren_o['Bezeichnung'] + ' ' +  str_column + ' ist ' +  str(check_info))
         if bez_o in result_cmpr:
             result_cmpr[str_column]='Änderungen'
         elif bez_o not in result_cmpr:

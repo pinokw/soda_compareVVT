@@ -34,19 +34,28 @@ def print_xls(vvt_check, tom_check, todo_check):
 
 
     #Sheet TOM
-    sheet = wb.create_sheet('TOM', 1)
-    headerdata_tom=('Kategorie der allg. TOM', 'Beschreibung')
-    sheet.append(headerdata_tom)
-    freezy=sheet['Y2']
-    sheet.freeze_panes=freezy
+    sheet1 = wb.create_sheet('TOM', 1)
+    headerdata_tom=('Allgemeine TOM Nr', 'Kategorie der allg. TOM', 'Beschreibung')
+    sheet1.append(headerdata_tom)
+    for b, tom_entry in enumerate(tom_check):
+        sheet1.cell(row=b+2, column=1, value=tom_entry['Allgemeine TOM Nr'])
+        sheet1.cell(row=b+2, column=2, value=tom_entry['Kategorie der allg. TOM'])
+        sheet1.cell(row=b+2, column=3, value=tom_entry['Beschreibung'])
+    freezy=sheet1['Y2']
+    sheet1.freeze_panes=freezy
 
 
     #Sheet ToDo
-    sheet = wb.create_sheet('ToDos', 2)
+    sheet2 = wb.create_sheet('ToDos', 2)
     headerdata_todo=('Verfahren Nr', 'Bezeichnung', 'Beschreibung', 'Status')
-    sheet.append(headerdata_todo)
-    freezy=sheet['Y2']
-    sheet.freeze_panes=freezy
+    sheet2.append(headerdata_todo)
+    for c, todo_entry in enumerate(todo_check):
+        sheet2.cell(row=c+2, column=1, value=todo_entry['Verfahren Nr'])
+        sheet2.cell(row=c+2, column=2, value=todo_entry['Bezeichnung'])
+        sheet2.cell(row=c+2, column=3, value=todo_entry['Beschreibung'])
+        sheet2.cell(row=c+2, column=4, value=todo_entry['Erledigt'])
+    freezy=sheet2['Y2']
+    sheet2.freeze_panes=freezy
     #sheet.auto_filter.ref = "A1:Y1"
     wb.save(str_xlsfile)
 
