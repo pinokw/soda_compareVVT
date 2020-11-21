@@ -65,15 +65,23 @@ def vergleiche_bewerte(info_o, info_n, bez_o, verfahren_o, str_column, result_cm
         # Speichern des Verfahrens und der Änderung in einem DICT
         if bez_o in result_cmpr:
             result_cmpr[str_column]='Änderungen'
+            result_cmpr['Text_OLD']=str(result_cmpr['Text_OLD'] + "  ++++ Zusatz+++" + info_o)
+            result_cmpr['Text_NEW']=str(result_cmpr['Text_NEW'] + "  ++++ Zusatz+++" + info_n)
         elif bez_o not in result_cmpr:
             result_cmpr['Bezeichnung']=bez_o
             result_cmpr[str_column]='Änderungen'
+            result_cmpr['Text_OLD']=info_o
+            result_cmpr['Text_NEW']=info_n
     if check_info>500:
         if bez_o in result_cmpr:
             result_cmpr[str_column]='ACHTUNG: Komplette Überarbeitung'
+            result_cmpr['Text_OLD']=str(result_cmpr['Text_OLD'] + "  ++++ Zusatz+++" + info_o)
+            result_cmpr['Text_NEW']=str(result_cmpr['Text_NEW'] + "  ++++ Zusatz+++" + info_n)
         elif bez_o not in result_cmpr:
             result_cmpr['Bezeichnung']=bez_o
             result_cmpr[str_column]='ACHTUNG: Komplette Überarbeitung'
+            result_cmpr['Text_OLD']=info_o
+            result_cmpr['Text_NEW']=info_n
     return result_cmpr
 
 def main(dict_old, dict_new):

@@ -15,7 +15,7 @@ def print_xls(vvt_check, tom_check, todo_check):
     sheet = wb.create_sheet('VVT', 0)
     headerdata_vvt=('Bezeichnung', 'Löschfrist', 'Risiko für Betroffenen',\
         'Beschreibung des Vorgangs und Zweck der Verarbeitung', 'Rechtsgrundlagen',\
-        'Rechtliche Würdigung')
+        'Rechtliche Würdigung', 'Inhalte ALT', 'Inhalte NEU')
     sheet.append(headerdata_vvt)
     for a, vvt_entry in enumerate(vvt_check):
         sheet.cell(row=a+2, column=1, value=vvt_entry['Bezeichnung'])
@@ -29,6 +29,10 @@ def print_xls(vvt_check, tom_check, todo_check):
             sheet.cell(row=a+2, column=5, value=vvt_entry['Rechtsgrundlagen'])
         if 'Rechtliche Würdigung' in vvt_entry:
             sheet.cell(row=a+2, column=6, value=vvt_entry['Rechtliche Würdigung'])
+        if 'Text_OLD' in vvt_entry:
+            sheet.cell(row=a+2, column=7, value=vvt_entry['Text_OLD'])
+        if 'Text_NEW' in vvt_entry:
+            sheet.cell(row=a+2, column=8, value=vvt_entry['Text_NEW'])
     freezy=sheet['Y2']
     sheet.freeze_panes=freezy
 
