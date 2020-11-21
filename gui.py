@@ -10,7 +10,7 @@ fileDir = os.path.dirname(os.path.realpath('__file__'))
 sys.path.append(fileDir)
 
 root=Tk.Tk()
-root.geometry('700x800')
+root.geometry('650x300')
 root.configure(bg='#2bab8d')
 fr_input=Tk.LabelFrame(root, text="Eingabe der VVT Vorlage", padx=5, pady=5)
 fr_input.grid(column=0, row=0, padx=10, pady=10)
@@ -36,7 +36,8 @@ def check_vvt():
     vvt_return=VVT_check.main(xls_old, xls_new)
     tom_return=TOM_check.main(xls_old, xls_new)
     ToDo_return=TODO_check.main(xls_old, xls_new)
-    write_xls.print_xls(vvt_return, tom_return, ToDo_return)
+    str_datei=entry_name.get()
+    write_xls.print_xls(vvt_return, tom_return, ToDo_return, str_datei)
     print('Das Workbook mit den Ergebnissen wurde erstellt')
 
 
@@ -48,6 +49,11 @@ cmd_input=Tk.Button(fr_input, text="Neue VVT Version (xls)", bg='#2bab47', width
 cmd_input.grid(column=2, row=0)
 cmd_check=Tk.Button(fr_input, text="Überprüfung der VVTs", command=check_vvt)
 cmd_check.grid(column=1, row=1)
+label_entry=Tk.Label(fr_input, text="Dateiname XLS Output")
+label_entry.grid(column=0, row=2)
+entry_name=Tk.Entry(fr_input, text="Dateiname")
+entry_name.grid(column=1, row=2)
+
 
 # Ausgabe
 

@@ -5,11 +5,15 @@ fileDir = os.path.dirname(os.path.realpath('__file__'))
 sys.path.append(fileDir)
 
 
-def print_xls(vvt_check, tom_check, todo_check):
-    str_xlsfile=os.path.join(fileDir, 'compare_result.xlsx')
-    file_xls=Path(str_xlsfile)
-    if file_xls.is_file():
-        os.remove(str_xlsfile)
+def print_xls(vvt_check, tom_check, todo_check, str_datei):
+    if str_datei == "":
+        str_xlsfile=os.path.join(fileDir, 'compare_result.xlsx')
+        file_xls=Path(str_xlsfile)
+        if file_xls.is_file():
+            os.remove(str_xlsfile)
+    else:
+        str_datei=str_datei + '.xlsx'
+        str_xlsfile=os.path.join(fileDir, str_datei)
     wb=Workbook()
     #Sheet VVT
     sheet = wb.create_sheet('VVT', 0)
