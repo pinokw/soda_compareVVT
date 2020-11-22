@@ -55,7 +55,7 @@ def print_xls(vvt_check, tom_check, todo_check, str_datei):
 
     #Sheet ToDo
     sheet2 = wb.create_sheet('ToDos', 2)
-    headerdata_todo=('Verfahren Nr', 'Bezeichnung', 'Beschreibung', 'Status')
+    headerdata_todo=('Verfahren Nr', 'Neue Bezeichnung', 'Neue Beschreibung', 'Status')
     sheet2.append(headerdata_todo)
     for c, todo_entry in enumerate(todo_check):
         sheet2.cell(row=c+2, column=1, value=todo_entry['Verfahren Nr'])
